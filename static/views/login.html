@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-   
-    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
-    <script src="../lib/js/jquery-1.12.4.js"></script>
-    <script src="../lib/js/bootstrap.min.js"></script>
 
     <style>
     .code-img {
@@ -32,22 +28,22 @@
                             <div class="form-group">
                               <label for="inputuser" class="col-sm-2 control-label">用户名</label>
                               <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputuser" placeholder="请输入用户名">
+                                <input type="text" name="username" class="form-control" id="inputuser" placeholder="请输入用户名">
                               </div>
                             </div>
                             <div class="form-group">
                               <label for="inputPassword" class="col-sm-2 control-label">密码</label>
                               <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码">
+                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="请输入密码">
                               </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputcode" class="col-sm-2 control-label">验证码</label>
                                 <div class="col-sm-6">
-                                  <input type="text" class="form-control" id="inputcode" placeholder="请输入验证码">
+                                  <input type="text" name="code" class="form-control" id="inputcode" placeholder="请输入验证码">
                                 </div>
                                 <div class="col-sm-4">
-                                   <img src="https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1531710808&di=2a1700b7334c2b80d7a70a23c1840418&src=http://s4.sinaimg.cn/mw690/003bsgbmgy6R6efoOr1c3" alt="" class="code-img">
+                                   <img src="/login/captchaImg" alt="" class="code-img">
                                   </div>
                               </div>
                             <div class="form-group">
@@ -66,3 +62,18 @@
       </div>
 </body>
 </html>
+ 
+<link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+<script src="../lib/js/jquery-1.12.4.js"></script>
+<script src="../lib/js/bootstrap.min.js"></script>
+
+<!-- 验证码图片点击刷新 -->
+<script>
+$(function(){
+  $('.code-img').click(function(){
+    //把图片的src属性赋值给他自己   在后面拼随机数或时间戳解决缓存问题
+    $(this).attr('src',$(this).attr('src')+`?${Math.random()}`);
+  })
+})
+
+</script>
